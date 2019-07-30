@@ -1,0 +1,10 @@
+{
+    "name": "Outlook AdBlocker",
+    "description": "A simple chrome extension to remove ads displayed in the outlook website",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_scripts": [ {
+        "matches": ["https://outlook.live.com/mail/inbox"],
+        "js": ["jquery-3.4.1.min.js", "remove.js"]
+    }]
+  }
