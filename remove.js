@@ -1,6 +1,21 @@
-setTimeout(function () {
+var isRemoved = false;
 
-  var outlookBannerAdLink =  $('a[href$="https://windows.microsoft.com/outlook/ad-free-outlook"]'); 
+setTimeout(function () {
+  isRemoved = RemoveComponents();
+
+  if (!isRemoved) {
+    debugger;
+    setTimeout(function () {
+      if (!RemoveComponents()) {
+        console.log("Failed to remove components");
+      }
+    }, 1500);
+  }
+}, 2500);
+
+function RemoveComponents() {
+
+  var outlookBannerAdLink = $('a[href$="https://windows.microsoft.com/outlook/ad-free-outlook"]');
 
   if (outlookBannerAdLink.length) {
     var banner = $(outlookBannerAdLink[0]).parent().parent().parent().parent();
@@ -14,6 +29,7 @@ setTimeout(function () {
     $(outlookAdBtn).remove();
   }
 
-}, 2500);
+  return (outlookBannerAdLink.length && outlookAdBtnText.length);
+}
 
 
